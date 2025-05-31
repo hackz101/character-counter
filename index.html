@@ -16,7 +16,7 @@
       <header class="theme-bar">
         <img src="assets/images/logo-light-theme.svg" alt="Logo">
         <img src="assets/images/logo-dark-theme.svg" alt="Logo" class="hidden">
-        <img src="assets/images/icon-moon.svg" alt="Theme Icon">
+        <img src="assets/images/icon-moon.svg" alt="Theme Icon" class="theme-icon">
       </header>
 
       <h1 class="slogan">Analyze your text in real-time.</h1>
@@ -30,41 +30,41 @@
 
       <div class="text-config-options">
         <label for="exclude-spaces">
-          <input type="checkbox" id="exclude-spaces">
+          <input type="checkbox" id="exclude-spaces" class="checkbox">
           Exclude Spaces
         </label>
 
         <label for="set-char-limit">
-          <input type="checkbox" id="set-char-limit">
+          <input type="checkbox" id="set-char-limit" class="checkbox">
           Set Character Limit
         </label>
 
         <input type="text" class="char-limit-field hidden">
 
-        <p>Approx. reading time: 0 minutes</p>
+        <p class="reading-time">Approx. reading time: 0 minutes</p>
       </div>
 
       <section class="kpi-set">
         <div class="kpi" id="total-chars">
           <div class="kpi-info">
-            <span class="total-chars-num">0</span>
-            <span class="total-chars-text">Total Characters</span>
+            <span class="kpi-num" id="total-chars-num">0</span>
+            <span class="kpi-descrip" id="total-chars-text">Total Characters</span>
           </div>
           <img src="assets/images/pattern-character-count.svg" alt="Pattern graphic">
         </div>
 
         <div class="kpi" id="word-count">
           <div class="kpi-info">
-            <span class="word-count-num">0</span>
-            <span class="word-count-text">Word Count</span>
+            <span class="kpi-num" id="word-count-num">0</span>
+            <span class="kpi-descrip" id="word-count-text">Word Count</span>
           </div>
           <img src="assets/images/pattern-word-count.svg" alt="Pattern graphic">
         </div>
 
         <div class="kpi" id="sentence-count">
           <div class="kpi-info">
-            <span class="sentence-count-num">0</span>
-            <span class="sentence-count-text">Sentence Count</span>
+            <span class="kpi-num" id="sentence-count-num">0</span>
+            <span class="kpi-descrip" id="sentence-count-text">Sentence Count</span>
           </div>
           <img src="assets/images/pattern-sentence-count.svg" alt="Pattern graphic">
         </div>

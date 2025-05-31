@@ -5,10 +5,33 @@
 }
 
 :root {
+  --color-content-bg: #f2f2f7;
+  --color-slogan: #12131a;
+  --color-txt-inpt-border: #E4E4EF;
+  --color-txt-inpt-text: #2a2b37;
+  --color-optns-text: #12131a;
+  --color-total-chars: #d3a0fa;
+  --color-word-count: #ff9f00;
+  --color-sentence-count: #fe8159;
+  --color-kpi: #12131a;
+  --color-density-title: #12131a;
+  --color-no-txt-plchldr: #404254;
 
   --ff-main: "DM Sans", sans-serif;
+  --fw-regular: 400;
+  --fw-bold: 700;
 
   box-sizing: border-box;
+}
+
+.dark {
+  --color-content-bg: #2a2b37;
+  --color-slogan: #f2f2f7;
+  --color-txt-inpt-border: #21222C;
+  --color-txt-inpt-text: #e4e4ef;
+  --color-optns-text: #e4e4ef;
+  --color-density-title: #e4e4ef;
+  --color-no-txt-plchldr: #e4e4ef;
 }
 
 .hidden {
@@ -17,4 +40,96 @@
 
 body {
   font-family: var(--ff-main);
+  font-size: 1rem;
+  font-weight: var(--fw-regular);
+  line-height: 100%;
+  letter-spacing: -0.0625rem;
+  background-image: url(/assets/images/bg-light-theme.png);
+  min-height: 100vh;
 }
+
+body.dark {
+  background-image: url(/assets/images/bg-dark-theme.png);
+}
+
+/*layout styles*/
+.container {
+  display: grid;
+  justify-content: center;
+}
+
+/*content styles*/
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.theme-icon {
+  background-color: var(--color-content-bg);
+}
+
+.slogan {
+  font-size: 4rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-slogan);
+}
+
+.text-input {
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.0375rem;
+  resize: none;
+  background-color: var(--color-content-bg);
+  border: 2px solid var(--color-txt-inpt-border);
+  color: var(--color-txt-inpt-text);
+}
+
+/*.checkbox {
+  background-color: var(--color-optns-text);
+}*/
+
+.text-config-options label,
+.reading-time {
+  line-height: 130%;
+  letter-spacing: -0.0375rem;
+  color: var(--color-optns-text);
+}
+
+#total-chars {
+  background-color: var(--color-total-chars);
+}
+
+#word-count {
+  background-color: var(--color-word-count);
+}
+
+#sentence-count {
+  background-color: var(--color-sentence-count);
+}
+
+.kpi-num {
+  font-size: 4rem;
+  font-weight: var(--fw-bold);
+  color: var(--color-kpi);
+}
+
+.kpi-descrip {
+  font-size: 1.25rem;
+  line-height: 140%;
+  letter-spacing: -0.0375rem;
+  color: var(--color-kpi)
+}
+
+.letter-density-header {
+  font-size: 1.5rem;
+  line-height: 130%;
+  letter-spacing: -0.025rem;
+  color: var(--color-density-title);
+}
+
+.no-text-placeholder {
+  line-height: 130%;
+  letter-spacing: -0.0375rem;
+  color: var(--color-no-txt-plchldr);
+}
+
