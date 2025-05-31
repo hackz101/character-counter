@@ -11,27 +11,73 @@
   <title>Frontend Mentor | Character counter</title>
 </head>
 <body>
+  <div class="container">
+    <main class=""content>
+      <header class="theme-bar">
+        <img src="assets/images/logo-light-theme.svg" alt="Logo">
+        <img src="assets/images/logo-dark-theme.svg" alt="Logo" class="hidden">
+        <img src="assets/images/icon-moon.svg" alt="Theme Icon">
+      </header>
 
-  Analyze your text in real-time.
+      <h1 class="slogan">Analyze your text in real-time.</h1>
 
-  Start typing here… (or paste your text)
+      <textarea rows="6" placeholder="Start typing here… (or paste your text)" class="text-input"></textarea>
 
-  Exclude Spaces
-  Set Character Limit
+      <div class="text-validation hidden">
+        <img src="assets/images/icon-info.svg" alt="Info Icon">
+        <p class="limit-reached-text">Limit reached! Your text exceeds 300 characters!</p>
+      </div>
 
-  Approx. reading time: <!-- Insert number --> minutes
+      <div class="text-config-options">
+        <label for="exclude-spaces">
+          <input type="checkbox" id="exclude-spaces">
+          Exclude Spaces
+        </label>
 
-  <!-- Insert number -->
-  Total Characters
+        <label for="set-char-limit">
+          <input type="checkbox" id="set-char-limit">
+          Set Character Limit
+        </label>
 
-  <!-- Insert number -->
-  Word Count
+        <input type="text" class="char-limit-field hidden">
 
-  <!-- Insert number -->
-  Sentence Count
+        <p>Approx. reading time: 0 minutes</p>
+      </div>
 
-  Letter Density
-  No characters found. Start typing to see letter density.
+      <section class="kpi-set">
+        <div class="kpi" id="total-chars">
+          <div class="kpi-info">
+            <span class="total-chars-num">0</span>
+            <span class="total-chars-text">Total Characters</span>
+          </div>
+          <img src="assets/images/pattern-character-count.svg" alt="Pattern graphic">
+        </div>
+
+        <div class="kpi" id="word-count">
+          <div class="kpi-info">
+            <span class="word-count-num">0</span>
+            <span class="word-count-text">Word Count</span>
+          </div>
+          <img src="assets/images/pattern-word-count.svg" alt="Pattern graphic">
+        </div>
+
+        <div class="kpi" id="sentence-count">
+          <div class="kpi-info">
+            <span class="sentence-count-num">0</span>
+            <span class="sentence-count-text">Sentence Count</span>
+          </div>
+          <img src="assets/images/pattern-sentence-count.svg" alt="Pattern graphic">
+        </div>
+      </section>
+
+      <section class="letter-density-section">
+        <h2 class="letter-density-header">Letter Density</h2>
+        <p class="no-text-placeholder">No characters found. Start typing to see letter density.</p>
+        <!--Densities render here-->
+        <p class="see-more hidden">See more <i class="fa-solid fa-angle-down"></i></p>
+      </section>
+    </main>
+  </div>
 
   <script src="index.js"></script>
 </body>
