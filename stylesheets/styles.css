@@ -22,6 +22,7 @@
   --color-char-lmt-text: #12131a;
   --color-validation-text: #da3701;
   --color-txt-input-vldtn: #da3701;
+  --color-density-text: #12131a;
 
   --ff-main: "DM Sans", sans-serif;
   --fw-regular: 400;
@@ -43,6 +44,7 @@
   --color-char-lmt-text: #ffffff;
   --color-validation-text: #fe8159;
   --color-txt-input-vldtn: #fe8159;
+  --color-density-text: #e4e4ef;
 }
 
 * {
@@ -288,6 +290,7 @@ input[type="checkbox"]:checked::after {
   letter-spacing: -0.0375rem;
 }
 
+/*density styles*/
 .letter-density-header {
   font-size: 1.5rem;
   line-height: 130%;
@@ -295,6 +298,45 @@ input[type="checkbox"]:checked::after {
   color: var(--color-density-title);
   margin-top: 0;
   margin-bottom: 1.25rem;
+}
+
+.density-line {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.density-letter {
+  line-height: 130%;
+  letter-spacing: -0.0375rem;
+  color: var(--color-density-text);
+  margin-right: 0.625rem;
+}
+
+/*.density-bar {
+  border: none;
+}*/
+
+.density-stats {
+  line-height: 130%;
+  letter-spacing: -0.0375rem;
+  color: var(--color-density-text);
+}
+
+.see-more {
+  display: inline-block;
+  font-size: 1.25rem;
+  line-height: 130%;
+  letter-spacing: -0.0375rem;
+  color: var(--color-density-text);
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.see-more i {
+  vertical-align: middle;
+  font-size: 0.75rem;
 }
 
 .no-text-placeholder {

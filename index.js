@@ -8,6 +8,7 @@ const sentenceCountNum = document.querySelector('#sentence-count-num');
 const readingTime = document.querySelector('.reading-time');
 const charLimitField = document.querySelector('#character-limit-field');
 const densityList = document.querySelector('.density-list');
+const seeMore = document.querySelector('.see-more');
 const avgReadingSpeed = 250; //WPM
 
 let text = "";
@@ -96,6 +97,32 @@ textArea.addEventListener('input', () => {
   generateDensities();
 });
 
+/*handle see more*/
+seeMore.addEventListener('click', () => {
+  if (seeMore.innerText === 'See more ') {
+    seeMore.firstChild.nodeValue = 'See less ';
+    seeMore.querySelector('i').classList.replace('fa-angle-down', 'fa-angle-up');
+
+    //show all bars
+    Array.from(densityList.children).forEach((densityBar) => {
+      if (densityBar.classList.contains('hidden')) {
+        densityBar.classList.remove('hidden');
+      }
+    });
+
+  } else {
+    seeMore.firstChild.nodeValue = 'See more ';
+    seeMore.querySelector('i').classList.replace('fa-angle-up', 'fa-angle-down');
+
+    //show only 5 bars
+    Array.from(densityList.children).forEach((densityBar, index) => {
+      if (index > 4) {
+        densityBar.classList.add('hidden');
+      }
+    });
+  }
+});
+
 function calculateCharCount() {
   if(!isExcludeSpaces) {
     charCount = text.length;
@@ -178,13 +205,25 @@ function renderDensities(sortedInfo, alphaText) {
   //create and append density lines
   sortedInfo.forEach((info, index) => {
     const densityLine = `
-      <div class="density-line">
+      <div class="density-line ${index > 4 ? ' hidden' : ''}">
         <span class="density-letter">${info.letter}</span>
-        <progress value="${info.count}" max="${charCount}"></progress>
-        <span class="density-stats">${info.count + ' (' + (info.count/alphaText.length).toFixed(2) + '%)'}</span>
+        <progress value="${info.count}" max="${charCount}" class="density-bar"></progress>
+        <span class="density-stats">${info.count + ' (' + (info.count/alphaText.length * 100).toFixed(2) + '%)'}</span>
       </div>
     `;
 
     densityList.insertAdjacentHTML('beforeend', densityLine);
   });
+
+  const seeMore = document.querySelector('.see-more');
+
+  if (densityList.childElementCount > 5) {
+    if (seeMore.classList.contains('hidden')) {
+      seeMore.classList.remove('hidden');
+    }
+  } else {
+    if (!seeMore.classList.contains('hidden')) {
+      seeMore.classList.add('hidden');
+    }
+  }
 }
