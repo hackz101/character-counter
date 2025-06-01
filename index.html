@@ -12,11 +12,16 @@
 </head>
 <body>
   <div class="container">
-    <main class=""content>
+    <main class="content">
       <header class="theme-bar">
-        <img src="assets/images/logo-light-theme.svg" alt="Logo">
-        <img src="assets/images/logo-dark-theme.svg" alt="Logo" class="hidden">
-        <img src="assets/images/icon-moon.svg" alt="Theme Icon" class="theme-icon">
+        <div class="logo">
+          <img src="assets/images/logo-light-theme.svg" alt="Logo" id="logo-light">
+        <img src="assets/images/logo-dark-theme.svg" alt="Logo" id="logo-dark" class="hidden">
+        </div>
+        <div class="theme">
+          <img src="assets/images/icon-moon.svg" alt="Theme Icon" id="theme-light" class="theme-icon">
+        <img src="assets/images/icon-sun.svg" alt="Theme Icon" id="theme-dark" class="theme-icon hidden">
+        </div>
       </header>
 
       <h1 class="slogan">Analyze your text in real-time.</h1>
@@ -24,22 +29,24 @@
       <textarea rows="6" placeholder="Start typing here… (or paste your text)" class="text-input"></textarea>
 
       <div class="text-validation hidden">
-        <img src="assets/images/icon-info.svg" alt="Info Icon">
+        <img src="assets/images/icon-info.svg" alt="Info Icon" class="validation-icon">
         <p class="limit-reached-text">Limit reached! Your text exceeds 300 characters!</p>
       </div>
 
       <div class="text-config-options">
-        <label for="exclude-spaces">
+        <label for="exclude-spaces" id="space-option">
           <input type="checkbox" id="exclude-spaces" class="checkbox">
           Exclude Spaces
         </label>
 
-        <label for="set-char-limit">
-          <input type="checkbox" id="set-char-limit" class="checkbox">
-          Set Character Limit
-        </label>
-
-        <input type="text" class="char-limit-field hidden">
+        <div class="char-limit-group">
+          <label for="set-char-limit" id="char-limit-option">
+            <input type="checkbox" id="set-char-limit" class="checkbox">
+            Set Character Limit
+          </label>
+  
+          <input type="text" id="character-limit-field" class="hidden">
+        </div>
 
         <p class="reading-time">Approx. reading time: 0 minutes</p>
       </div>
@@ -50,7 +57,7 @@
             <span class="kpi-num" id="total-chars-num">0</span>
             <span class="kpi-descrip" id="total-chars-text">Total Characters</span>
           </div>
-          <img src="assets/images/pattern-character-count.svg" alt="Pattern graphic">
+          <img src="assets/images/pattern-character-count.svg" alt="Pattern graphic" class="kpi-graphic">
         </div>
 
         <div class="kpi" id="word-count">
@@ -58,7 +65,7 @@
             <span class="kpi-num" id="word-count-num">0</span>
             <span class="kpi-descrip" id="word-count-text">Word Count</span>
           </div>
-          <img src="assets/images/pattern-word-count.svg" alt="Pattern graphic">
+          <img src="assets/images/pattern-word-count.svg" alt="Pattern graphic" class="kpi-graphic">
         </div>
 
         <div class="kpi" id="sentence-count">
@@ -66,7 +73,7 @@
             <span class="kpi-num" id="sentence-count-num">0</span>
             <span class="kpi-descrip" id="sentence-count-text">Sentence Count</span>
           </div>
-          <img src="assets/images/pattern-sentence-count.svg" alt="Pattern graphic">
+          <img src="assets/images/pattern-sentence-count.svg" alt="Pattern graphic" class="kpi-graphic">
         </div>
       </section>
 
