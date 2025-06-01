@@ -92,6 +92,7 @@ textArea.addEventListener('input', () => {
   }
 
   validateText();
+  generateDensities();
 });
 
 function calculateCharCount() {
@@ -109,9 +110,7 @@ function calculateCharCount() {
 function validateText() {
   const textValidation = document.querySelector('.text-validation');
   const validationHidden = textValidation.classList.contains('hidden');
-  console.log(`text length: ${text.length}`);
-  console.log(`char limit: ${charLimit}`);
-  console.log(`hidden: ${validationHidden}`);
+
   if (charLimit) {
     if (charCount > charLimit) {
       if (validationHidden) {
@@ -128,6 +127,43 @@ function validateText() {
     if (!validationHidden) {
       textValidation.classList.add('hidden');
       textArea.classList.remove('error');
+    }
+  }
+}
+
+function generateDensities() {
+  const noText = document.querySelector('.no-text-placeholder');
+  const densityList = document.querySelector('.density-list');
+  const filteredLetters = text.trim().replace(/[^a-zA-Z]/g, '').toUpperCase();
+
+  if (filteredLetters) {
+    if (!noText.classList.contains('hidden')) {
+      noText.classList.add('hidden');
+    }
+    if (densityList.classList.contains('hidden')) {
+      densityList.classList.remove('hidden');
+    }
+
+    //generate info objects
+    const uniqueChars = [...new Set(filteredLetters)];
+    const uniqueCharsInfo = uniqueChars.map((uniqueChar) => {
+      let count = 0;
+
+      for (let char of text) {
+        if (char.toUpperCase() === uniqueChar) count++;
+      }
+
+      return {letter: uniqueChar, count: count}
+    });
+    //sort
+    const sortedInfo = uniqueCharsInfo.sort((a, b) => b.count - a.count);
+    console.log(sortedInfo);
+  } else {
+    if (noText.classList.contains('hidden')) {
+      noText.classList.remove('hidden');
+    }
+    if (!densityList.classList.contains('hidden')) {
+      densityList.classList.add('hidden');
     }
   }
 }
