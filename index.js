@@ -7,6 +7,7 @@ const wordCountNum = document.querySelector('#word-count-num');
 const sentenceCountNum = document.querySelector('#sentence-count-num');
 const readingTime = document.querySelector('.reading-time');
 const charLimitField = document.querySelector('#character-limit-field');
+const densityList = document.querySelector('.density-list');
 const avgReadingSpeed = 250; //WPM
 
 let text = "";
@@ -157,7 +158,8 @@ function generateDensities() {
     });
     //sort
     const sortedInfo = uniqueCharsInfo.sort((a, b) => b.count - a.count);
-    console.log(sortedInfo);
+    //render
+    renderDensities(sortedInfo, filteredLetters);
   } else {
     if (noText.classList.contains('hidden')) {
       noText.classList.remove('hidden');
@@ -166,4 +168,23 @@ function generateDensities() {
       densityList.classList.add('hidden');
     }
   }
+}
+
+function renderDensities(sortedInfo, alphaText) {
+  //remove old densities
+  while (densityList.firstChild) {
+    densityList.removeChild(densityList.firstChild);
+  }
+  //create and append density lines
+  sortedInfo.forEach((info, index) => {
+    const densityLine = `
+      <div class="density-line">
+        <span class="density-letter">${info.letter}</span>
+        <progress value="${info.count}" max="${charCount}"></progress>
+        <span class="density-stats">${info.count + ' (' + (info.count/alphaText.length).toFixed(2) + '%)'}</span>
+      </div>
+    `;
+
+    densityList.insertAdjacentHTML('beforeend', densityLine);
+  });
 }
