@@ -1,5 +1,5 @@
 const themeButtons = document.querySelectorAll('.theme-icon');
-const textArea = document.querySelector('.text-input');
+const textArea = document.querySelector('#text-input');
 const excludeSpaces = document.querySelector('#exclude-spaces');
 const setCharLimit = document.querySelector('#set-char-limit');
 const charCountNum = document.querySelector('#total-chars-num');
@@ -207,7 +207,9 @@ function renderDensities(sortedInfo, alphaText) {
     const densityLine = `
       <div class="density-line ${index > 4 ? ' hidden' : ''}">
         <span class="density-letter">${info.letter}</span>
-        <progress value="${info.count}" max="${charCount}" class="density-bar"></progress>
+        <div class="density-bar">
+          <div class="percentage-bar" style="width: ${info.count/alphaText.length * 100}%;"></div>
+        </div>
         <span class="density-stats">${info.count + ' (' + (info.count/alphaText.length * 100).toFixed(2) + '%)'}</span>
       </div>
     `;
@@ -219,6 +221,10 @@ function renderDensities(sortedInfo, alphaText) {
 
   if (densityList.childElementCount > 5) {
     if (seeMore.classList.contains('hidden')) {
+      /*if (seeMore.innerText === 'See less ') {
+        seeMore.firstChild.nodeValue = 'See less ';
+        seeMore.querySelector('i').classList.replace('fa-angle-up', 'fa-angle-down');
+      }*/
       seeMore.classList.remove('hidden');
     }
   } else {

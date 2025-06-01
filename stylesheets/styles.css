@@ -23,6 +23,8 @@
   --color-validation-text: #da3701;
   --color-txt-input-vldtn: #da3701;
   --color-density-text: #12131a;
+  --color-progress-bckgnd: #f2f2f7;
+  --color-progress-percent: #d3a0fa;
 
   --ff-main: "DM Sans", sans-serif;
   --fw-regular: 400;
@@ -45,6 +47,7 @@
   --color-validation-text: #fe8159;
   --color-txt-input-vldtn: #fe8159;
   --color-density-text: #e4e4ef;
+  --color-progress-bckgnd: #21222c;
 }
 
 * {
@@ -114,7 +117,7 @@ img {
   text-align: center;
 }
 
-.text-input {
+#text-input {
   font-size: 1.25rem;
   line-height: 140%;
   letter-spacing: -0.0375rem;
@@ -123,11 +126,12 @@ img {
   border: 2px solid var(--color-txt-inpt-border);
   color: var(--color-txt-inpt-text);
   width: 100%;
+  height: 12.5rem;
   padding: 1.25rem;
   border-radius: 0.75rem;;
 }
 
-.text-input.error{
+#text-input.error{
   border-color: var(--color-txt-input-vldtn);
 }
 
@@ -310,17 +314,34 @@ input[type="checkbox"]:checked::after {
   line-height: 130%;
   letter-spacing: -0.0375rem;
   color: var(--color-density-text);
+  width: 1rem;
   margin-right: 0.625rem;
 }
 
-/*.density-bar {
-  border: none;
-}*/
+.density-bar {
+  flex: 1;
+  margin-right: 0.875rem;
+  height: 0.75rem;
+  background-color: var(--color-progress-bckgnd);
+  border-radius: 999px;
+}
+
+.density-line:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.percentage-bar {
+  height: 100%;
+  background-color: var(--color-progress-percent);
+  border-radius: 999px;
+}
 
 .density-stats {
+  text-align: right;
   line-height: 130%;
   letter-spacing: -0.0375rem;
   color: var(--color-density-text);
+  min-width: 4.75rem;
 }
 
 .see-more {
