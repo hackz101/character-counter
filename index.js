@@ -80,7 +80,6 @@ textArea.addEventListener('input', () => {
   const trimmedWords = text.trim().split(/\s/g).filter(word => word.trim() !== '');
   wordCount = trimmedWords.length;
   wordCountNum.innerText = wordCount;
-  console.log(trimmedWords);
   //update sentence count
   const trimmedSentences = text.trim().split(/[.!?]+/);
   sentenceCount = trimmedSentences.filter(sentence => sentence.trim() !== '').length;
@@ -203,9 +202,11 @@ function renderDensities(sortedInfo, alphaText) {
     densityList.removeChild(densityList.firstChild);
   }
   //create and append density lines
+  const isSeeMore = seeMore.innerText === 'See more ';
+  console.log(isSeeMore);
   sortedInfo.forEach((info, index) => {
     const densityLine = `
-      <div class="density-line ${index > 4 ? ' hidden' : ''}">
+      <div class="density-line ${index > 4 && isSeeMore ? ' hidden' : ''}">
         <span class="density-letter">${info.letter}</span>
         <div class="density-bar">
           <div class="percentage-bar" style="width: ${info.count/alphaText.length * 100}%;"></div>
@@ -217,19 +218,15 @@ function renderDensities(sortedInfo, alphaText) {
     densityList.insertAdjacentHTML('beforeend', densityLine);
   });
 
-  const seeMore = document.querySelector('.see-more');
-
   if (densityList.childElementCount > 5) {
     if (seeMore.classList.contains('hidden')) {
-      /*if (seeMore.innerText === 'See less ') {
-        seeMore.firstChild.nodeValue = 'See less ';
-        seeMore.querySelector('i').classList.replace('fa-angle-up', 'fa-angle-down');
-      }*/
       seeMore.classList.remove('hidden');
     }
   } else {
     if (!seeMore.classList.contains('hidden')) {
       seeMore.classList.add('hidden');
     }
+    seeMore.firstChild.nodeValue = 'See more ';
+    seeMore.querySelector('i').classList.replace('fa-angle-up', 'fa-angle-down');
   }
 }
