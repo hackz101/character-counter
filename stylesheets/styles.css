@@ -433,17 +433,18 @@ body.dark .validation-icon {
   }
 
   .slogan {
+    margin: 2.5rem auto;
     font-size: 2.5rem;
     font-weight: var(--fw-bold);
     line-height: 100%;
     letter-spacing: -0.0625;
-    margin: 2.5rem auto;
   }
-}
 
-@media (max-width: 500px) {
-  .slogan {
-    width: 100%;
+  .kpi-num {
+    font-size: 2.5rem;
+    font-weight: var(--fw-bold);
+    line-height: 100%;
+    letter-spacing: -0.0625;
   }
 }
 
@@ -464,5 +465,12 @@ body.dark .validation-icon {
   .char-limit-group {
     margin-bottom: 0.75rem;
   }
+}
+
+@media (max-width: 500px) {
+  .slogan {
+    width: 100%;
+  }
+
 }
 
