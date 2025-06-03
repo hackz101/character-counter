@@ -309,6 +309,7 @@ body.dark .validation-icon {
   position: relative;
   border-radius: 0.75rem;
   overflow: hidden;
+  max-width: 100%;
 }
 
 .kpi-info {
