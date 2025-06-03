@@ -61,11 +61,13 @@ setCharLimit.addEventListener('click', () => {
   validateText();
 });
 
-/*ADD char limit
-validation code here
-for negatives and chars*/
+/*handle char limit field*/
 charLimitField.addEventListener('blur', () => {
-  charLimit = charLimitField.value;
+  charLimit = charLimitField.value.replace(/[^0-9]/g, ''); //remove non-numeric
+  if(/^0+$/.test(charLimit) && charLimit.length > 1) {
+    charLimit = '0';
+  } //remove 0 duplicates if only 0s
+  charLimitField.value = charLimit;
   validateText();
   document.querySelector('.limit-reached-text').innerText = `Limit reached! Your text exceeds ${charLimit} characters!`;
 });
