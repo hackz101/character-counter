@@ -64,7 +64,7 @@ setCharLimit.addEventListener('click', () => {
 /*ADD char limit
 validation code here
 for negatives and chars*/
-charLimitField.addEventListener('input', () => {
+charLimitField.addEventListener('blur', () => {
   charLimit = charLimitField.value;
   validateText();
   document.querySelector('.limit-reached-text').innerText = `Limit reached! Your text exceeds ${charLimit} characters!`;
