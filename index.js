@@ -21,24 +21,15 @@ const defaultCharLimit = 300;
 
 /*switch theme*/
 themeButtons.forEach(themeButton => {
-  themeButton.addEventListener('click', () => {
-
-    if (document.body.classList.contains('dark')) {
-      document.body.classList.remove('dark');
-      document.querySelector('#logo-light').classList.remove('hidden');
-      document.querySelector('#logo-dark').classList.add('hidden');
-      document.querySelector('#theme-dark').classList.add('hidden');
-      document.querySelector('#theme-light').classList.remove('hidden');
-    } else {
-      document.body.classList.add('dark');
-      document.querySelector('#logo-dark').classList.remove('hidden');
-      document.querySelector('#logo-light').classList.add('hidden');
-      document.querySelector('#theme-light').classList.add('hidden');
-      document.querySelector('#theme-dark').classList.remove('hidden');
-    }
-
-    localStorage.setItem('theme', setTheme === 'dark' ? 'light' : 'dark');
+  themeButton.addEventListener('click',(event) => {
+    switchTheme();
   });
+});
+
+document.querySelector('.theme').addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    switchTheme();
+  }
 });
 
 /*handle exclude spaces*/
@@ -48,19 +39,25 @@ excludeSpaces.addEventListener('click', () => {
   validateText();
 });
 
+excludeSpaces.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    excludeSpaces.checked = !excludeSpaces.checked;
+    isExcludeSpaces = !isExcludeSpaces;
+    calculateCharCount();
+    validateText();
+  }
+});
+
 /*handle char limit*/
 setCharLimit.addEventListener('click', () => {
-  if (charLimit) {
-    charLimit = null;
-    charLimitField.classList.add('hidden');
-  } else {
-    charLimit = defaultCharLimit;
-    charLimitField.value = charLimit;
-    charLimitField.classList.remove('hidden');
-    document.querySelector('.limit-reached-text').innerText = `Limit reached! Your text exceeds ${charLimit} characters!`;
-  }
+  toggleCharLimit();
+});
 
-  validateText();
+setCharLimit.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    setCharLimit.checked = !setCharLimit.checked;
+    toggleCharLimit();
+  }
 });
 
 /*handle char limit field*/
@@ -125,6 +122,38 @@ seeMore.addEventListener('click', () => {
     });
   }
 });
+
+function switchTheme() {
+  if (document.body.classList.contains('dark')) {
+    document.body.classList.remove('dark');
+    document.querySelector('#logo-light').classList.remove('hidden');
+    document.querySelector('#logo-dark').classList.add('hidden');
+    document.querySelector('#theme-dark').classList.add('hidden');
+    document.querySelector('#theme-light').classList.remove('hidden');
+  } else {
+    document.body.classList.add('dark');
+    document.querySelector('#logo-dark').classList.remove('hidden');
+    document.querySelector('#logo-light').classList.add('hidden');
+    document.querySelector('#theme-light').classList.add('hidden');
+    document.querySelector('#theme-dark').classList.remove('hidden');
+  }
+
+  localStorage.setItem('theme', setTheme === 'dark' ? 'light' : 'dark');
+}
+
+function toggleCharLimit() {
+  if (charLimit) {
+    charLimit = null;
+    charLimitField.classList.add('hidden');
+  } else {
+    charLimit = defaultCharLimit;
+    charLimitField.value = charLimit;
+    charLimitField.classList.remove('hidden');
+    document.querySelector('.limit-reached-text').innerText = `Limit reached! Your text exceeds ${charLimit} characters!`;
+  }
+
+  validateText();
+}
 
 function calculateCharCount() {
   if(!isExcludeSpaces) {
