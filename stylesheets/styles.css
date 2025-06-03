@@ -129,7 +129,8 @@ img {
   font-weight: var(--fw-bold);
   line-height: 100%;
   color: var(--color-slogan);
-  margin: 3rem 0;
+  margin: 3rem auto;
+  width: 65%;
   text-align: center;
 }
 
@@ -426,7 +427,11 @@ img {
   }
 
   .slogan {
-    margin: 2.5rem 0;
+    font-size: 2.5rem;
+    font-weight: var(--fw-bold);
+    line-height: 100%;
+    letter-spacing: -0.0625;
+    margin: 2.5rem auto;
   }
 }
 
