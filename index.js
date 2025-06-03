@@ -36,6 +36,8 @@ themeButtons.forEach(themeButton => {
       document.querySelector('#theme-light').classList.add('hidden');
       document.querySelector('#theme-dark').classList.remove('hidden');
     }
+
+    localStorage.setItem('theme', setTheme === 'dark' ? 'light' : 'dark');
   });
 });
 

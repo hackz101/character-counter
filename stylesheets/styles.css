@@ -169,8 +169,14 @@ img {
 }
 
 .validation-icon {
+  src: url(/assets/images/icon-info-light.svg);
   display: inline-block;
 }
+
+body.dark .validation-icon {
+  src: url(/assets/images/icon-info-dark.svg);
+}
+
 .limit-reached-text {
   display: inline-block;
   font-size: 1rem;
